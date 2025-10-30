@@ -29,7 +29,7 @@ export default function NavigationDock() {
       {/* Logo on the left */}
       <div className="flex items-center gap-2">
         <Image
-          src="/images/logo.png"
+          src="/images/Logo.png"
           alt="Logo"
           width={180}
           height={120}
