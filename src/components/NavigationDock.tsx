@@ -25,14 +25,14 @@ export default function NavigationDock() {
   };
 
   return (
-    <header className="fixed top-0 w-full flex items-center justify-between px-6 py-3 text-[#BFBFBF]">
+    <header className="fixed top-0 left-0 w-full flex items-center justify-between px-6 py-3 text-[#BFBFBF] z-50">
       {/* Logo on the left */}
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 shrink-0">
         <Image
           src="/images/Logo.png"
           alt="Logo"
-          width={180}
-          height={120}
+          width={120}  
+          height={80}  
           className="object-contain"
         />
       </div>
@@ -67,33 +67,31 @@ export default function NavigationDock() {
         <Search className="text-xl cursor-pointer hover:text-white transition" />
         <Bell className="text-xl cursor-pointer hover:text-white transition" />
       </div>
-    
 
-    {/* Mobile Dock (at the bottom) */}
-
-    <div className="lg:hidden fixed bottom-0 left-0 w-full px-4 py-3">
-      <Dock
-        className="flex justify-center gap-10 bg-[#0F0F0F]"
-        iconSize={40}
-        iconMagnification={60}
-        iconDistance={120}
-        direction="middle"
-      >
-        {dockItems.map((item) => (
-          <DockIcon
-            key={item.path}
-            size={40}
-            magnification={60}
-            onClick={() => router.push(item.path)}
-          >
-            <div className={getDockClass(item.path)}>
-              <span className="text-2xl">{item.icon}</span>
-              <span className="text-xs mt-1">{item.label}</span>
-            </div>
-          </DockIcon>
-        ))}
-      </Dock>
-    </div>
+      {/* Mobile Dock (at the bottom) */}
+      <div className="lg:hidden fixed bottom-0 left-0 w-full px-4 py-3 bg-[#0F0F0F]">
+        <Dock
+          className="flex justify-center gap-10"
+          iconSize={40}
+          iconMagnification={60}
+          iconDistance={120}
+          direction="middle"
+        >
+          {dockItems.map((item) => (
+            <DockIcon
+              key={item.path}
+              size={40}
+              magnification={60}
+              onClick={() => router.push(item.path)}
+            >
+              <div className={getDockClass(item.path)}>
+                <span className="text-2xl">{item.icon}</span>
+                <span className="text-xs mt-1">{item.label}</span>
+              </div>
+            </DockIcon>
+          ))}
+        </Dock>
+      </div>
     </header>
   );
 }
