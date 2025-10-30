@@ -20,11 +20,7 @@ export default function NavigationDock() {
     const isActive =
       pathname === path || (pathname === "/" && path === "/home");
     return `flex flex-col items-center justify-center cursor-pointer transition
-          ${
-            isActive
-              ? "bg-[#1A1A1A] text-white"
-              : "hover:bg-[#1A1A1A] hover:text-white"
-          } 
+          ${isActive ? "bg-[#1A1A1A] text-white" : "hover:bg-[#1A1A1A] hover:text-white"}
           w-12 h-12 rounded-full`;
   };
 
@@ -41,8 +37,8 @@ export default function NavigationDock() {
         />
       </div>
 
-      {/* Dock in the center */}
-      <div className="flex justify-center flex-1">
+      {/* Dock in the center (desktop) */}
+      <div className="hidden lg:flex justify-center flex-1">
         <Dock
           className="flex justify-center gap-10 px-4 bg-[#0F0F0F]/80"
           iconSize={40}
@@ -71,6 +67,33 @@ export default function NavigationDock() {
         <Search className="text-xl cursor-pointer hover:text-white transition" />
         <Bell className="text-xl cursor-pointer hover:text-white transition" />
       </div>
+    
+
+    {/* Mobile Dock (at the bottom) */}
+
+    <div className="lg:hidden fixed bottom-0 left-0 w-full px-4 py-3">
+      <Dock
+        className="flex justify-center gap-10 bg-[#0F0F0F]"
+        iconSize={40}
+        iconMagnification={60}
+        iconDistance={120}
+        direction="middle"
+      >
+        {dockItems.map((item) => (
+          <DockIcon
+            key={item.path}
+            size={40}
+            magnification={60}
+            onClick={() => router.push(item.path)}
+          >
+            <div className={getDockClass(item.path)}>
+              <span className="text-2xl">{item.icon}</span>
+              <span className="text-xs mt-1">{item.label}</span>
+            </div>
+          </DockIcon>
+        ))}
+      </Dock>
+    </div>
     </header>
   );
 }
