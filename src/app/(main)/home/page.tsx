@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div>
+    <div className="bg-[#141414]">
        {/* Container with background image and absolute positioning for the H1 */}
       <div className="w-full h-[93vh] relative">
         {/* Large screen image */}
@@ -44,12 +44,14 @@ export default function Home() {
             can also create your own watchlists, so you can easily find the
             content you want to watch.
           </p>
-          <p></p>
+         <a href="#features" className="mt-6 inline-block bg-[#E50914] text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-[#F40612] transition">
+            Start Watching Now
+          </a>
         </main>
       </div>
       
       {/* Features Section */}
-      <div className="h-screen bg-red-50">
+      <div className="h-screen">
         <h2 className="text-2xl font-bold text-center pt-10">Features</h2>
       </div>
     </div>
